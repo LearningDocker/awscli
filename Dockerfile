@@ -45,11 +45,8 @@ RUN set -x \
   && apt-get purge -y --auto-remove $pythonDeps
 
 RUN set -x \
-  && perconaDeps='wget'
-  && apt-get update && apt-get install -y --no-install-recommends $perconaDeps \
-  && wget percona.com/get/percona-toolkit.deb \
-  && rm -rf /var/lib/apt/lists/* \
-  && apt-get purge -y --auto-remove $perconaDeps
+  && apt-get update && apt-get install -y --no-install-recommends percona-toolkit \
+  && rm -rf /var/lib/apt/lists/*
 
 USER docker
 WORKDIR /home/docker
