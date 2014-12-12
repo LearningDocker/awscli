@@ -7,9 +7,6 @@ MAINTAINER Jimmy Y. Huang <jimmy.huang@duragility.com>
 ENV LANG C.UTF-8
 
 RUN set -x \
-  && useradd docker -u 1000 -s /bin/bash --create-home
-
-RUN set -x \
   && apt-get update && apt-get install -y --no-install-recommends \
     bind9-host \
     ca-certificates \
@@ -48,7 +45,11 @@ RUN set -x \
   && apt-get update && apt-get install -y --no-install-recommends percona-toolkit \
   && rm -rf /var/lib/apt/lists/*
 
+RUN set -x \
+  && useradd docker -u 1000 -s /bin/bash --create-home
+
 USER docker
+
 WORKDIR /home/docker
 
 RUN echo 'complete -C /usr/local/bin/aws_completer aws' >> $HOME/.bashrc
