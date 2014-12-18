@@ -50,7 +50,7 @@ RUN set -x \
 
 USER docker
 
-WORKDIR /home/docker
+WORKDIR /app
 
 RUN echo 'complete -C /usr/local/bin/aws_completer aws' >> $HOME/.bashrc
 
